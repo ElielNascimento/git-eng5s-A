@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Marcos Vinicius e o Cara</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Baloo+2:wght@400;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--bg-a: #fef6e4;
+			--bg-b: #fde2e4;
+			--bg-c: #cde7ff;
+			--ink: #181818;
+			--hot: #ff3d00;
+			--accent: #0ea5e9;
+			--card: rgba(255, 255, 255, 0.72);
+			--shadow: 0 20px 50px rgba(24, 24, 24, 0.2);
+		}
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			min-height: 100vh;
+			font-family: "Baloo 2", sans-serif;
+			color: var(--ink);
+			background:
+				radial-gradient(circle at 10% 15%, #fff1a8 0%, transparent 35%),
+				radial-gradient(circle at 85% 20%, #ffd6a5 0%, transparent 32%),
+				radial-gradient(circle at 20% 80%, #b8f2e6 0%, transparent 30%),
+				linear-gradient(135deg, var(--bg-a), var(--bg-b) 50%, var(--bg-c));
+			overflow-x: hidden;
+		}
+
+		.wrapper {
+			width: min(1100px, 92%);
+			margin: 0 auto;
+			padding: 2rem 0 3rem;
+		}
+
+		.tag {
+			display: inline-block;
+			margin-bottom: 1rem;
+			padding: 0.45rem 0.9rem;
+			border-radius: 999px;
+			background: #fff;
+			border: 2px solid #111;
+			font-weight: 800;
+			letter-spacing: 0.4px;
+			transform: rotate(-2deg);
+			box-shadow: 4px 4px 0 #111;
+			animation: pop 800ms ease both;
+		}
+
+		h1 {
+			font-family: "Bebas Neue", sans-serif;
+			font-size: clamp(2.4rem, 8vw, 7rem);
+			line-height: 0.92;
+			letter-spacing: 1.2px;
+			text-wrap: balance;
+			margin-bottom: 0.9rem;
+			text-shadow: 5px 5px 0 #ffffff;
+			animation: rise 900ms ease both;
+		}
+
+		.subtitle {
+			font-size: clamp(1rem, 2.3vw, 1.35rem);
+			font-weight: 700;
+			margin-bottom: 1.7rem;
+			animation: rise 1000ms ease both;
+		}
+
+		.grid {
+			display: grid;
+			grid-template-columns: 1.1fr 0.9fr;
+			gap: 1.3rem;
+			align-items: stretch;
+		}
+
+		.photo-card,
+		.text-card {
+			border: 3px solid #111;
+			border-radius: 20px;
+			background: var(--card);
+			backdrop-filter: blur(5px);
+			box-shadow: var(--shadow);
+			overflow: hidden;
+		}
+
+		.photo-wrap {
+			position: relative;
+			padding: 0.8rem;
+			height: 100%;
+			min-height: 420px;
+		}
+
+		.photo-wrap img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center;
+			border-radius: 14px;
+			border: 2px solid #111;
+			display: block;
+			background: repeating-linear-gradient(
+				-45deg,
+				#f7f7f7,
+				#f7f7f7 14px,
+				#ececec 14px,
+				#ececec 28px
+			);
+		}
+
+		.sticker {
+			position: absolute;
+			right: 1.4rem;
+			top: 1.4rem;
+			background: #fff;
+			border: 2px solid #111;
+			border-radius: 14px;
+			padding: 0.4rem 0.6rem;
+			font-weight: 800;
+			font-size: 0.95rem;
+			box-shadow: 3px 3px 0 #111;
+			transform: rotate(8deg);
+		}
+
+		.text-card {
+			padding: 1.2rem 1.1rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			gap: 1rem;
+		}
+
+		.quotes {
+			display: grid;
+			gap: 0.7rem;
+		}
+
+		.quote {
+			padding: 0.75rem 0.9rem;
+			border-radius: 12px;
+			border: 2px dashed #111;
+			background: #fff;
+			font-size: 1.05rem;
+			font-weight: 700;
+		}
+
+		.meter {
+			background: #fff;
+			border: 2px solid #111;
+			border-radius: 14px;
+			padding: 0.75rem;
+		}
+
+		.meter-title {
+			font-weight: 800;
+			margin-bottom: 0.45rem;
+		}
+
+		.bar {
+			height: 14px;
+			border: 2px solid #111;
+			border-radius: 99px;
+			background: #fff;
+			overflow: hidden;
+		}
+
+		.fill {
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(90deg, #ff7300, #ffd000, #22c55e);
+			animation: pulse 1.6s ease-in-out infinite;
+			transform-origin: left;
+		}
+
+		.btn {
+			align-self: flex-start;
+			border: 2px solid #111;
+			background: var(--hot);
+			color: #fff;
+			border-radius: 14px;
+			padding: 0.65rem 1rem;
+			font-size: 1rem;
+			font-weight: 800;
+			cursor: pointer;
+			box-shadow: 4px 4px 0 #111;
+			transition: transform 0.2s ease, box-shadow 0.2s ease;
+		}
+
+		.btn:hover {
+			transform: translate(-2px, -2px);
+			box-shadow: 6px 6px 0 #111;
+		}
+
+		.btn:active {
+			transform: translate(2px, 2px);
+			box-shadow: 2px 2px 0 #111;
+		}
+
+		.footer {
+			margin-top: 1rem;
+			font-weight: 700;
+			text-align: center;
+			font-size: 0.98rem;
+			opacity: 0.85;
+		}
+
+		.burst {
+			position: fixed;
+			inset: 0;
+			pointer-events: none;
+			overflow: hidden;
+			z-index: 20;
+		}
+
+		.particle {
+			position: absolute;
+			width: 12px;
+			height: 12px;
+			border-radius: 4px;
+			opacity: 0;
+			animation: fly 1300ms ease-out forwards;
+		}
+
+		@keyframes rise {
+			from {
+				opacity: 0;
+				transform: translateY(12px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		@keyframes pop {
+			from {
+				opacity: 0;
+				transform: scale(0.8) rotate(-2deg);
+			}
+			to {
+				opacity: 1;
+				transform: scale(1) rotate(-2deg);
+			}
+		}
+
+		@keyframes pulse {
+			0%,
+			100% {
+				transform: scaleX(0.97);
+			}
+			50% {
+				transform: scaleX(1);
+			}
+		}
+
+		@keyframes fly {
+			0% {
+				opacity: 0;
+				transform: translateY(0) rotate(0deg);
+			}
+			20% {
+				opacity: 1;
+			}
+			100% {
+				opacity: 0;
+				transform: translateY(-220px) rotate(540deg);
+			}
+		}
+
+		@media (max-width: 900px) {
+			.grid {
+				grid-template-columns: 1fr;
+			}
+
+			.photo-wrap {
+				min-height: 340px;
+			}
+		}
+
+		@media (max-width: 540px) {
+			.wrapper {
+				width: 94%;
+			}
+
+			.quote {
+				font-size: 0.98rem;
+			}
+
+			.sticker {
+				font-size: 0.8rem;
+			}
+		}
+	</style>
+</head>
+<body>
+	<main class="wrapper">
+		<div class="tag">ATENCAO SALA INTEIRA</div>
+
+		<h1>O MARCOS VINICIUS DE AZEVEDO BATISTA E O CARA</h1>
+		<p class="subtitle">
+			Confirmado por especialistas da resenha: elegancia no talo, carisma destravado e 200% modo protagonista.
+		</p>
+
+		<section class="grid">
+			<article class="photo-card">
+				<div class="photo-wrap">
+					<img src="marcos-vinicius.jpg" alt="Marcos Vinicius estiloso segurando uma taça ao ar livre">
+					<span class="sticker">NIVEL: MARCAO</span>
+				</div>
+			</article>
+
+			<article class="text-card">
+				<div class="quotes">
+					<p class="quote">"Chegou no role? O ambiente automaticamente fica 37% mais bonito."</p>
+					<p class="quote">"Camisa preta, postura firme e olhar de quem ja zerou a vida."</p>
+					<p class="quote">"Se humildade tivesse rosto, seria ele tentando negar que e o cara."</p>
+				</div>
+
+				<div class="meter">
+					<p class="meter-title">Indice oficial de "ser o cara"</p>
+					<div class="bar" aria-hidden="true">
+						<div class="fill"></div>
+					</div>
+				</div>
+
+				<button class="btn" id="modoMarcao" type="button">ATIVAR MODO MARCAO</button>
+			</article>
+		</section>
+
+		<p class="footer">Abriu esse HTML na branch? Entao voce testemunhou historia.</p>
+	</main>
+
+	<div class="burst" id="burst" aria-hidden="true"></div>
+
+	<script>
+		const burst = document.getElementById("burst");
+		const button = document.getElementById("modoMarcao");
+		const colors = ["#ff6f00", "#00b4d8", "#22c55e", "#f43f5e", "#facc15"];
+
+		function spawnBurst() {
+			for (let i = 0; i < 24; i += 1) {
+				const particle = document.createElement("span");
+				particle.className = "particle";
+				particle.style.left = `${Math.random() * 100}%`;
+				particle.style.bottom = "0px";
+				particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+				particle.style.animationDelay = `${Math.random() * 160}ms`;
+				particle.style.transform = `translateY(0) scale(${0.7 + Math.random() * 0.8})`;
+				burst.appendChild(particle);
+				setTimeout(() => particle.remove(), 1400);
+			}
+		}
+
+		button.addEventListener("click", () => {
+			spawnBurst();
+			button.textContent = "MODO MARCAO: ATIVO";
+			setTimeout(() => {
+				button.textContent = "ATIVAR MODO MARCAO";
+			}, 1700);
+		});
+
+		window.addEventListener("load", spawnBurst);
+	</script>
+</body>
+</html>
